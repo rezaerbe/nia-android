@@ -24,5 +24,9 @@ gradlePlugin {
             id = "nowinandroid.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
         }
+        register("androidHilt") {
+            id = "nowinandroid.android.hilt"
+            implementationClass = "AndroidHiltConventionPlugin"
+        }
     }
 }

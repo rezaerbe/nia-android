@@ -4,10 +4,6 @@ plugins {
 
 android {
     namespace = "com.erbe.nowinandroid.core.design"
-
-    defaultConfig {
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
 }
 
 dependencies {
