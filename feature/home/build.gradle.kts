@@ -1,6 +1,5 @@
 plugins {
-    id("nowinandroid.android.library")
-    id("nowinandroid.android.hilt")
+    id("nowinandroid.android.feature")
 }
 
 android {
@@ -9,6 +8,4 @@ android {
 
 dependencies {
 
-    implementation(project(":core:data"))
-    implementation(project(":core:common"))
 }

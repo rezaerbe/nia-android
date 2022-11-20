@@ -28,5 +28,9 @@ gradlePlugin {
             id = "nowinandroid.android.hilt"
             implementationClass = "AndroidHiltConventionPlugin"
         }
+        register("androidFeature") {
+            id = "nowinandroid.android.feature"
+            implementationClass = "AndroidFeatureConventionPlugin"
+        }
     }
 }

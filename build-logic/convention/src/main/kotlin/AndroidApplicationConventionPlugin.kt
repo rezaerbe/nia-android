@@ -1,4 +1,5 @@
 import com.android.build.api.dsl.ApplicationExtension
+import com.erbe.nowinandroid.configureAndroidViewBinding
 import com.erbe.nowinandroid.configureKotlinAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -15,6 +16,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
             extensions.configure<ApplicationExtension> {
                 configureKotlinAndroid(this)
                 defaultConfig.targetSdk = 33
+                configureAndroidViewBinding(this)
             }
         }
     }

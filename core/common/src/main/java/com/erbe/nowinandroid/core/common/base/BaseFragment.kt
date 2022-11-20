@@ -23,16 +23,6 @@ abstract class BaseFragment<VB : ViewBinding>(
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        initInteraction()
-        initObservation()
-    }
-
-    abstract fun initInteraction()
-    abstract fun initObservation()
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
