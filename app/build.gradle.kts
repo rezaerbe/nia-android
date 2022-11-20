@@ -1,5 +1,7 @@
 plugins {
     id("nowinandroid.android.application")
+    id("nowinandroid.android.application.view")
+    id("nowinandroid.android.navigation")
     id("nowinandroid.android.hilt")
 }
 
@@ -29,14 +31,23 @@ android {
             excludes.add("/META-INF/{AL2.0,LGPL2.1}")
         }
     }
+
+    hilt {
+        enableAggregatingTask = true
+    }
 }
 
 dependencies {
 
     implementation(project(":core:design"))
 
+    implementation(project(":feature:home"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.android.material)
-    implementation(libs.androidx.constraintLayout)
+    implementation(libs.androidx.window)
+}
+
+kapt {
+    correctErrorTypes = true
 }

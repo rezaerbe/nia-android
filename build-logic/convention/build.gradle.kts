@@ -24,13 +24,21 @@ gradlePlugin {
             id = "nowinandroid.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
         }
+        register("androidViewApplication") {
+            id = "nowinandroid.android.application.view"
+            implementationClass = "AndroidViewApplicationConventionPlugin"
+        }
+        register("androidViewLibrary") {
+            id = "nowinandroid.android.library.view"
+            implementationClass = "AndroidViewLibraryConventionPlugin"
+        }
+        register("androidNavigation") {
+            id = "nowinandroid.android.navigation"
+            implementationClass = "AndroidNavigationConventionPlugin"
+        }
         register("androidHilt") {
             id = "nowinandroid.android.hilt"
             implementationClass = "AndroidHiltConventionPlugin"
-        }
-        register("androidFeature") {
-            id = "nowinandroid.android.feature"
-            implementationClass = "AndroidFeatureConventionPlugin"
         }
     }
 }

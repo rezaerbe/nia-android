@@ -19,5 +19,5 @@ dependencies {
 
     implementation(libs.squareup.okhttp3)
 
-    implementation(libs.github.chuckerteam.chucker.library)
+    implementation(libs.chuckerteam.chucker)
 }

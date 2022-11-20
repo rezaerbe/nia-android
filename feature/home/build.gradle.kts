@@ -1,5 +1,8 @@
 plugins {
-    id("nowinandroid.android.feature")
+    id("nowinandroid.android.library")
+    id("nowinandroid.android.library.view")
+    id("nowinandroid.android.navigation")
+    id("nowinandroid.android.hilt")
 }
 
 android {
@@ -8,4 +11,7 @@ android {
 
 dependencies {
 
+    implementation(project(":core:common"))
+
+    implementation(libs.androidx.fragment.ktx)
 }

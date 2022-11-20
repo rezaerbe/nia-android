@@ -1,5 +1,6 @@
 plugins {
     id("nowinandroid.android.library")
+    id("nowinandroid.android.library.view")
 }
 
 android {
@@ -8,5 +9,4 @@ android {
 
 dependencies {
 
-    implementation(libs.android.material)
 }
