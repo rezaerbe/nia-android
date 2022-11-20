@@ -24,11 +24,12 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("implementation", project(":core:data"))
                 add("implementation", project(":core:common"))
 
+                add("implementation", libs.findLibrary("android.material").get())
                 add("implementation", libs.findLibrary("androidx.constraintLayout").get())
 
                 add("implementation", libs.findLibrary("androidx.fragment.ktx").get())
-                add("implementation", libs.findLibrary("androidx.navigation.ktx").get())
-                add("implementation", libs.findLibrary("androidx.navigation.ui").get())
+                add("implementation", libs.findLibrary("androidx.navigation.fragment.ktx").get())
+                add("implementation", libs.findLibrary("androidx.navigation.ui.ktx").get())
             }
         }
     }

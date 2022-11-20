@@ -9,10 +9,10 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface DataModule {
+abstract class DataModule {
 
     @Binds
-    fun bindNiaRemoteRepository(
+    abstract fun bindNiaRemoteRepository(
         niaRemoteRepositoryImpl: NiaRemoteRepositoryImpl
     ): NiaRemoteRepository
 }
