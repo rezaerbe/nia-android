@@ -3,6 +3,8 @@ package com.erbe.nowinandroid.core.data.repository
 import com.erbe.nowinandroid.core.common.dispatcher.AppDispatcher.Default
 import com.erbe.nowinandroid.core.common.dispatcher.Dispatcher
 import com.erbe.nowinandroid.core.data.model.Article
+import com.erbe.nowinandroid.core.data.model.Author
+import com.erbe.nowinandroid.core.data.model.Topic
 import com.erbe.nowinandroid.core.data.model.asDomain
 import com.erbe.nowinandroid.core.network.datasource.NiaRemoteDataSource
 import kotlinx.coroutines.CoroutineDispatcher
@@ -20,6 +22,20 @@ class NiaRemoteRepositoryImpl @Inject constructor(
         niaRemoteDataSource.getArticles().map { flowArticles ->
             flowArticles.map { articles ->
                 articles.asDomain()
+            }
+        }.flowOn(defaultDispatcher)
+
+    override fun getAuthors(): Flow<List<Author>> =
+        niaRemoteDataSource.getAuthors().map { flowAuthors ->
+            flowAuthors.map { authors ->
+                authors.asDomain()
+            }
+        }.flowOn(defaultDispatcher)
+
+    override fun getTopics(): Flow<List<Topic>> =
+        niaRemoteDataSource.getTopics().map { flowTopics ->
+            flowTopics.map { topics ->
+                topics.asDomain()
             }
         }.flowOn(defaultDispatcher)
 }

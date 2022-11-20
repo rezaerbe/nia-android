@@ -8,7 +8,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.erbe.nowinandroid.databinding.ActivityMainBinding
 import com.erbe.nowinandroid.util.WindowSizeClass
 import com.erbe.nowinandroid.util.computeWindowSizeClasses
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
