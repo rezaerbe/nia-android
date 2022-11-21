@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="16dp"
+    android:paddingTop="16dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="8dp">
+
+    <ImageView
+        android:id="@+id/author_image"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:importantForAccessibility="no"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/image" />
+
+    <TextView
+        android:id="@+id/author_name"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="12dp"
+        android:gravity="center_vertical"
+        android:textAppearance="?attr/textAppearanceBody2"
+        app:layout_constraintBottom_toBottomOf="@id/author_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/author_image"
+        app:layout_constraintTop_toTopOf="@id/author_image"
+        tools:text="Name" />
+
+    <TextView
+        android:id="@+id/article_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/article_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/author_image"
+        tools:text="Title" />
+
+    <TextView
+        android:id="@+id/article_date_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:textAppearance="?attr/textAppearanceCaption"
+        app:layout_constraintEnd_toStartOf="@id/article_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/article_title"
+        tools:text="Nov 17, 2022  \u00b7  5 min read" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/topic_list"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toStartOf="@id/article_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/article_date_time" />
+
+    <ImageView
+        android:id="@+id/article_image"
+        android:layout_width="96dp"
+        android:layout_height="72dp"
+        android:importantForAccessibility="no"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/article_title"
+        tools:src="@drawable/image" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

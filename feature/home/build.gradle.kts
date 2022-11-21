@@ -11,8 +11,10 @@ android {
 
 dependencies {
 
+    implementation(project(":core:design"))
     implementation(project(":core:data"))
     implementation(project(":core:common"))
 
     implementation(libs.androidx.fragment.ktx)
+    implementation(libs.coil)
 }
