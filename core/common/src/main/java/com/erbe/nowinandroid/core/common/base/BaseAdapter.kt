@@ -1,13 +1,16 @@
 package com.erbe.nowinandroid.core.common.base
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
+import com.google.android.material.divider.MaterialDividerItemDecoration
 
 abstract class BaseAdapter<T : Any, VB : ViewBinding>(
     private val inflaterFactory: (LayoutInflater, ViewGroup?, Boolean) -> VB,
@@ -45,4 +48,8 @@ abstract class BaseAdapter<T : Any, VB : ViewBinding>(
             return oldItem == newItem
         }
     }
+}
+
+fun itemDivider(context: Context): MaterialDividerItemDecoration {
+    return MaterialDividerItemDecoration(context, LinearLayoutManager.VERTICAL)
 }

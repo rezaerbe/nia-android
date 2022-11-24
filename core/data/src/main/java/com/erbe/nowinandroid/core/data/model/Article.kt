@@ -15,7 +15,21 @@ data class Article(
     val author: Int?,
     val topics: List<Int?>?,
     val url: String?
-)
+) {
+
+    val articleNull = Article(
+        id = null,
+        title = null,
+        description = null,
+        content = null,
+        imageUrl = null,
+        publishDate = null,
+        readTime = null,
+        author = null,
+        topics = listOf(),
+        url = null
+    )
+}
 
 fun ArticleResponse.asDomain() = Article(
     id,

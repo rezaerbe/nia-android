@@ -1,5 +1,6 @@
 package com.erbe.nowinandroid.core.common.state
 
+import android.util.Log
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
@@ -18,4 +19,25 @@ fun <T> Flow<T>.asDataState(): Flow<DataState<T>> {
         }
         .onStart { emit(DataState.Loading) }
         .catch { emit(DataState.Error(it)) }
+}
+
+fun <T> DataState<T>.process(
+    onLoading: () -> Unit,
+    onError: (exception: Throwable?) -> Unit,
+    onSuccess: (data: T) -> Unit
+) {
+    when (this) {
+        is DataState.Loading -> {
+            Log.d("TAG", "Loading")
+            onLoading()
+        }
+        is DataState.Error -> {
+            Log.d("TAG", exception.toString())
+            onError(exception)
+        }
+        is DataState.Success -> {
+            Log.d("TAG", data.toString())
+            onSuccess(data)
+        }
+    }
 }
