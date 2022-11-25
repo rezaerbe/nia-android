@@ -33,6 +33,7 @@ fun <T> DataState<T>.process(
         }
         is DataState.Error -> {
             Log.d("TAG", exception.toString())
+            exception?.printStackTrace()
             onError(exception)
         }
         is DataState.Success -> {

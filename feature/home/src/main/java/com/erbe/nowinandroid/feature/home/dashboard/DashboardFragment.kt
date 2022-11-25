@@ -1,7 +1,6 @@
 package com.erbe.nowinandroid.feature.home.dashboard
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.erbe.nowinandroid.core.common.base.BaseFragment

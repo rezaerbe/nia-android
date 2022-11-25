@@ -32,13 +32,10 @@ class DashboardViewModel @Inject constructor(
             niaRemoteRepository.getTopics()
         ) { articles, authors, topics ->
             articles.map { article ->
-                if (article == article.articleNull) {
-
-                }
                 ArticleUiState(
                     article = article,
-                    author = article.author?.let { author ->
-                        authors.find { it.id == author }
+                    author = authors.find { author ->
+                        author.id == article.author
                     },
                     listTopic = article.topics?.map { topic ->
                         topics.find { it.id == topic }

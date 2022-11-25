@@ -15,14 +15,10 @@ fun formatReadTime(readTime: Int?): String? {
     }
 }
 
-fun formatFollower(follower: Int?): String? {
-    return follower?.let { count ->
-        "$count Followers"
-    }
+fun formatFollower(follower: Int?): String {
+    return "${follower ?: 0} Followers"
 }
 
-fun formatStory(story: Int?): String? {
-    return story?.let { count ->
-        "$count Stories"
-    }
+fun formatStory(story: Int?): String {
+    return "${story ?: 0} Stories"
 }
