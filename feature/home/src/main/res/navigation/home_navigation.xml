@@ -8,7 +8,19 @@
     <fragment
         android:id="@+id/dashboardFragment"
         android:name="com.erbe.nowinandroid.feature.home.dashboard.DashboardFragment"
-        android:label="Dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard">
+
+        <action
+            android:id="@+id/action_dashboardFragment_to_listArticleFragment"
+            app:destination="@id/listArticleFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/listArticleFragment"
+        android:name="com.erbe.nowinandroid.feature.home.article.ListArticleFragment"
+        android:label="List Article"
+        tools:layout="@layout/fragment_list_article" />
 
 </navigation>

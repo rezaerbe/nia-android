@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="dashboard">Dashboard</string>
+    <string name="article_date_time">"%s  ·  %s"</string>
 </resources>

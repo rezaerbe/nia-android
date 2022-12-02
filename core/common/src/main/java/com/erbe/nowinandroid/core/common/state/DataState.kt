@@ -22,9 +22,9 @@ fun <T> Flow<T>.asDataState(): Flow<DataState<T>> {
 }
 
 fun <T> DataState<T>.process(
-    onLoading: () -> Unit,
-    onError: (exception: Throwable?) -> Unit,
-    onSuccess: (data: T) -> Unit
+    onLoading: () -> Unit = {},
+    onError: (exception: Throwable?) -> Unit = {},
+    onSuccess: (data: T) -> Unit = {}
 ) {
     when (this) {
         is DataState.Loading -> {

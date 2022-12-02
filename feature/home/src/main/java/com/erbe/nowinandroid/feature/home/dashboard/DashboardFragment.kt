@@ -2,11 +2,9 @@ package com.erbe.nowinandroid.feature.home.dashboard
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.erbe.nowinandroid.core.common.base.BaseFragment
-import com.erbe.nowinandroid.core.common.base.itemDivider
-import com.erbe.nowinandroid.core.common.extension.launchAndCollectIn
-import com.erbe.nowinandroid.core.common.state.process
+import com.erbe.nowinandroid.core.common.base.click
 import com.erbe.nowinandroid.feature.home.databinding.FragmentDashboardBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,31 +12,17 @@ import dagger.hilt.android.AndroidEntryPoint
 class DashboardFragment :
     BaseFragment<FragmentDashboardBinding>(FragmentDashboardBinding::inflate) {
 
-    private val dashboardViewModel: DashboardViewModel by viewModels()
-    private lateinit var articleAdapter: ArticleAdapter
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initAdapter()
-        initObservation()
+        initInteraction()
     }
 
-    private fun initAdapter() {
-        articleAdapter = ArticleAdapter()
-        binding.recyclerView.adapter = articleAdapter
-        binding.recyclerView.addItemDecoration(itemDivider(requireContext()))
-    }
-
-    private fun initObservation() {
-        dashboardViewModel.articleUiState.launchAndCollectIn(viewLifecycleOwner) { articleUiState ->
-            articleUiState.process(
-                onLoading = {},
-                onError = {},
-                onSuccess = { data ->
-                    articleAdapter.submitList(data)
-                }
+    private fun initInteraction() {
+        binding.article.setOnClickListener(click {
+            findNavController().navigate(
+                DashboardFragmentDirections.actionDashboardFragmentToListArticleFragment()
             )
-        }
+        })
     }
 }
