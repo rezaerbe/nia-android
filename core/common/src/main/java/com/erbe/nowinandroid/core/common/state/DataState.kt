@@ -1,6 +1,8 @@
 package com.erbe.nowinandroid.core.common.state
 
 import android.util.Log
+import android.view.View
+import androidx.core.view.isVisible
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
@@ -19,6 +21,22 @@ fun <T> Flow<T>.asDataState(): Flow<DataState<T>> {
         }
         .onStart { emit(DataState.Loading) }
         .catch { emit(DataState.Error(it)) }
+}
+
+fun <T> DataState<T>.state(
+    viewLoading: View? = null,
+    viewError: View? = null,
+    viewSuccess: View? = null
+) {
+    viewLoading?.let {
+        it.isVisible = this is DataState.Loading
+    }
+    viewError?.let {
+        it.isVisible = this is DataState.Error
+    }
+    viewSuccess?.let {
+        it.isVisible = this is DataState.Success
+    }
 }
 
 fun <T> DataState<T>.process(

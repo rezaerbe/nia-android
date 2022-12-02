@@ -13,19 +13,25 @@ data class Article(
     val publishDate: String,
     val readTime: String,
     val author: Int,
-    val topics: List<Int?>?,
+    val topics: List<Int?>? = emptyList(),
     val url: String? = ""
 )
 
-fun ArticleResponse.asDomain() = Article(
-    id!!,
-    title!!,
-    description,
-    content,
-    imageUrl,
-    formatPublishDate(publishDate)!!,
-    formatReadTime(readTime)!!,
-    author!!,
-    topics,
-    url
-)
+fun ArticleResponse.asDomain(): Article? {
+    return try {
+        Article(
+            id!!,
+            title!!,
+            description,
+            content,
+            imageUrl,
+            formatPublishDate(publishDate)!!,
+            formatReadTime(readTime)!!,
+            author!!,
+            topics,
+            url
+        )
+    } catch (e: Exception) {
+        null
+    }
+}

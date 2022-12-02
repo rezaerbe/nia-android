@@ -20,21 +20,21 @@ class NiaRemoteRepositoryImpl @Inject constructor(
 
     override fun getArticles(): Flow<List<Article>> =
         niaRemoteDataSource.getArticles().map { flowArticles ->
-            flowArticles.map { articles ->
+            flowArticles.mapNotNull { articles ->
                 articles.asDomain()
             }
         }.flowOn(defaultDispatcher)
 
     override fun getAuthors(): Flow<List<Author>> =
         niaRemoteDataSource.getAuthors().map { flowAuthors ->
-            flowAuthors.map { authors ->
+            flowAuthors.mapNotNull { authors ->
                 authors.asDomain()
             }
         }.flowOn(defaultDispatcher)
 
     override fun getTopics(): Flow<List<Topic>> =
         niaRemoteDataSource.getTopics().map { flowTopics ->
-            flowTopics.map { topics ->
+            flowTopics.mapNotNull { topics ->
                 topics.asDomain()
             }
         }.flowOn(defaultDispatcher)

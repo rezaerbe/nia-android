@@ -7,6 +7,7 @@ import com.erbe.nowinandroid.core.common.base.BaseFragment
 import com.erbe.nowinandroid.core.common.base.itemDivider
 import com.erbe.nowinandroid.core.common.extension.launchAndCollectIn
 import com.erbe.nowinandroid.core.common.state.process
+import com.erbe.nowinandroid.core.common.state.state
 import com.erbe.nowinandroid.feature.home.databinding.FragmentListArticleBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,7 +33,13 @@ class ListArticleFragment :
 
     private fun initObservation() {
         listArticleViewModel.articleUiState.launchAndCollectIn(viewLifecycleOwner) { articleUiState ->
+            articleUiState.state(
+                binding.progressBar, binding.textError, binding.recyclerView
+            )
             articleUiState.process(
+                onError = { exception ->
+                    binding.textError.text = exception?.message ?: "Error"
+                },
                 onSuccess = { data ->
                     articleAdapter.submitList(data)
                 }

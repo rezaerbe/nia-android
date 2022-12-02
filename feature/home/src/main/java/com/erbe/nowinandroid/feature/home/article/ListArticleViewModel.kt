@@ -31,16 +31,22 @@ class ListArticleViewModel @Inject constructor(
             niaRemoteRepository.getAuthors(),
             niaRemoteRepository.getTopics()
         ) { articles, authors, topics ->
-            articles.map { article ->
-                ArticleUiState(
-                    article = article,
-                    author = authors.find { author ->
-                        author.id == article.author
-                    },
-                    listTopic = article.topics?.map { topic ->
-                        topics.find { it.id == topic }
-                    }
-                )
+            articles.mapNotNull { article ->
+                try {
+                    ArticleUiState(
+                        article = article,
+                        author = authors.find { author ->
+                            author.id == article.author
+                        }!!,
+                        listTopic = article.topics?.map { topicId ->
+                            topics.find { topic ->
+                                topic.id == topicId
+                            }
+                        }
+                    )
+                } catch (e: Exception) {
+                    null
+                }
             }
         }
 
@@ -58,7 +64,7 @@ class ListArticleViewModel @Inject constructor(
 }
 
 data class ArticleUiState(
-    val article: Article?,
-    val author: Author?,
+    val article: Article,
+    val author: Author,
     val listTopic: List<Topic?>?
 )

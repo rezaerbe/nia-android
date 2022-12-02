@@ -12,10 +12,16 @@ data class Topic(
     val url: String? = ""
 )
 
-fun TopicResponse.asDomain() = Topic(
-    id!!,
-    name!!,
-    formatFollower(follower),
-    formatStory(story),
-    url
-)
+fun TopicResponse.asDomain(): Topic? {
+    return try {
+        Topic(
+            id!!,
+            name!!,
+            formatFollower(follower),
+            formatStory(story),
+            url
+        )
+    } catch (e: Exception) {
+        null
+    }
+}

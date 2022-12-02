@@ -12,11 +12,17 @@ data class Author(
     val url: String? = ""
 )
 
-fun AuthorResponse.asDomain() = Author(
-    id!!,
-    name!!,
-    bio,
-    imageUrl,
-    formatFollower(follower),
-    url
-)
+fun AuthorResponse.asDomain(): Author? {
+    return try {
+        Author(
+            id!!,
+            name!!,
+            bio,
+            imageUrl,
+            formatFollower(follower),
+            url
+        )
+    } catch (e: Exception) {
+        null
+    }
+}
