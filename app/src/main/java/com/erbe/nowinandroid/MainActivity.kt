@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.erbe.nowinandroid.core.common.design.WindowSizeClass
+import com.erbe.nowinandroid.core.common.design.computeWindowSizeClasses
 import com.erbe.nowinandroid.databinding.ActivityMainBinding
-import com.erbe.nowinandroid.util.WindowSizeClass
-import com.erbe.nowinandroid.util.computeWindowSizeClasses
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

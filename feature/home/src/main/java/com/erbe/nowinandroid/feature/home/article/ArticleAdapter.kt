@@ -9,6 +9,7 @@ import coil.transform.CircleCropTransformation
 import coil.transform.RoundedCornersTransformation
 import coil.transform.Transformation
 import com.erbe.nowinandroid.core.common.base.BaseAdapter
+import com.erbe.nowinandroid.core.common.design.toDensity
 import com.erbe.nowinandroid.feature.home.databinding.ItemArticleBinding
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -16,23 +17,19 @@ import com.google.android.material.chip.ChipGroup
 class ArticleAdapter : BaseAdapter<ArticleUiState, ItemArticleBinding>(
     ItemArticleBinding::inflate,
     onItemBind = { item, binding, itemView ->
-        item.author?.let { author ->
-            binding.authorImage.loadImage(author.imageUrl, CircleCropTransformation())
-            binding.authorName.text = author.name
-        }
+        binding.authorImage.loadImage(item.author.imageUrl, CircleCropTransformation())
+        binding.authorName.text = item.author.name
 
-        item.article?.let { article ->
-            binding.articleTitle.text = article.title
-            binding.articleDateTime.text = itemView.resources.getString(
-                com.erbe.nowinandroid.feature.home.R.string.article_date_time,
-                article.publishDate,
-                article.readTime
-            )
-            binding.articleImage.loadImage(
-                article.imageUrl,
-                RoundedCornersTransformation(8f.toDensity(itemView.context))
-            )
-        }
+        binding.articleTitle.text = item.article.title
+        binding.articleDateTime.text = itemView.resources.getString(
+            com.erbe.nowinandroid.feature.home.R.string.article_date_time,
+            item.article.publishDate,
+            item.article.readTime
+        )
+        binding.articleImage.loadImage(
+            item.article.imageUrl,
+            RoundedCornersTransformation(8f.toDensity(itemView.context))
+        )
 
         item.listTopic?.forEach { topic ->
             topic?.let {
@@ -41,10 +38,6 @@ class ArticleAdapter : BaseAdapter<ArticleUiState, ItemArticleBinding>(
         }
     }
 )
-
-private fun Float.toDensity(context: Context): Float {
-    return this * context.resources.displayMetrics.density
-}
 
 private fun ImageView.loadImage(imageUrl: String?, transformation: Transformation) {
     this.load(imageUrl) {

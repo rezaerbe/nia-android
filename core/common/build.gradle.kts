@@ -11,4 +11,5 @@ android {
 dependencies {
 
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.window)
 }

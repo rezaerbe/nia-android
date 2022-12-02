@@ -1,4 +1,4 @@
-package com.erbe.nowinandroid.util
+package com.erbe.nowinandroid.core.common.design
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.window.layout.WindowMetricsCalculator

@@ -40,12 +40,12 @@ android {
 dependencies {
 
     implementation(project(":core:design"))
+    implementation(project(":core:common"))
 
     implementation(project(":feature:home"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.window)
 }
 
 kapt {
