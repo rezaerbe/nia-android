@@ -45,6 +45,7 @@ class ListArticleViewModel @Inject constructor(
                         }
                     )
                 } catch (e: Exception) {
+                    e.printStackTrace()
                     null
                 }
             }

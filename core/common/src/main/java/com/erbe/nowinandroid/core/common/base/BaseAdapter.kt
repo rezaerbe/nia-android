@@ -13,14 +13,15 @@ import androidx.viewbinding.ViewBinding
 import com.google.android.material.divider.MaterialDividerItemDecoration
 
 abstract class BaseAdapter<T : Any, VB : ViewBinding>(
-    private val inflaterFactory: (LayoutInflater, ViewGroup?, Boolean) -> VB,
-    private val onItemBind: (T, VB, View) -> Unit
+    private val inflaterFactory: (LayoutInflater, ViewGroup?, Boolean) -> VB
 ) : ListAdapter<T, BaseAdapter.BaseViewHolder<T, VB>>(BaseItemCallback<T>()) {
+
+    abstract fun onItemBind(): (T, VB, View) -> Unit
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<T, VB> {
         val binding = inflaterFactory(LayoutInflater.from(parent.context), parent, false)
         val view = binding.root
-        return BaseViewHolder(view, binding, onItemBind)
+        return BaseViewHolder(view, binding, onItemBind())
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder<T, VB>, position: Int) {

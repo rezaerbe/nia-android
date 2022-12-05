@@ -32,6 +32,7 @@ fun ArticleResponse.asDomain(): Article? {
             url
         )
     } catch (e: Exception) {
+        e.printStackTrace()
         null
     }
 }

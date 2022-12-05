@@ -23,6 +23,7 @@ fun AuthorResponse.asDomain(): Author? {
             url
         )
     } catch (e: Exception) {
+        e.printStackTrace()
         null
     }
 }

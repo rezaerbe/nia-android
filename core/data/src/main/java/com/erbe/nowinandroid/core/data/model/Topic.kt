@@ -22,6 +22,7 @@ fun TopicResponse.asDomain(): Topic? {
             url
         )
     } catch (e: Exception) {
+        e.printStackTrace()
         null
     }
 }
