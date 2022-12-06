@@ -1,7 +1,6 @@
 package com.erbe.nowinandroid.core.common.design
 
-import android.content.Context
+import android.content.res.Resources
 
-fun Float.toDensity(context: Context): Float {
-    return this * context.resources.displayMetrics.density
-}
+val Float.dp: Float
+    get() = this * Resources.getSystem().displayMetrics.density
