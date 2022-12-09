@@ -20,4 +20,7 @@ dependencies {
     implementation(libs.squareup.okhttp3)
 
     implementation(libs.chuckerteam.chucker)
+
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.squareup.okhttp3.mockwebserver)
 }
